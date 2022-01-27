@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package hoz.proto.v1.lang;
+
+option java_multiple_files = true;
+option java_package = "net.hoz.api.service";
+
+import "resulter/proto/Resulter.proto";
+import "hoz/proto/v1/data/CommonData.proto";
+import "google/protobuf/empty.proto";
+
+message LangData {
+  string code = 1;
+  string data = 2;
+}
+
+message LangRequest {
+  string code = 1;
+}
+
+service NetLangService {
+  rpc one(LangRequest) returns (resulter.proto.ResultableData);
+
+  rpc all(google.protobuf.Empty) returns (stream LangData);
+
+  rpc subscribe(google.protobuf.Empty) returns (stream LangData);
+}
