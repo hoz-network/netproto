@@ -23,6 +23,6 @@ jobs:
         env:
           OPTIMIZE_FOR_CI_CD: 1
           NEXUS_URL_RELEASE: https://repo.hoznet.dev/private
-          NEXUS_URL_PASSWORD: https://repo.hoznet.dev/private
+          NEXUS_URL_SNAPSHOT: https://repo.hoznet.dev/private
           NEXUS_USERNAME: github
           NEXUS_PASSWORD: ${{ secrets.REPOSILITE_CI_TOKEN }}
