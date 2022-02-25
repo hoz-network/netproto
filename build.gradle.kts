@@ -3,7 +3,7 @@ import com.google.protobuf.gradle.*
 plugins {
     `java-library`
     idea
-    id("org.screamingsandals.plugin-builder") version "1.0.74"
+    id("org.screamingsandals.plugin-builder") version "1.0.76"
     id("com.google.protobuf") version "0.8.18"
 }
 
