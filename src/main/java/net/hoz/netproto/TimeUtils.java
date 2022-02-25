@@ -6,7 +6,7 @@ import lombok.experimental.UtilityClass;
 import java.time.Instant;
 
 /**
- * Utility class for converting {@link Instant} into {@link Timestamp} and via versa.
+ * Utility class for converting {@link Instant} into {@link Timestamp} and vice-versa.
  */
 @UtilityClass
 public class TimeUtils {
