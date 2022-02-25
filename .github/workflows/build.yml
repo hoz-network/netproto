@@ -19,7 +19,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build and publish with Gradle
-        run: ./gradlew publish
+        run: ./gradlew screamCompile
         env:
           OPTIMIZE_FOR_CI_CD: 1
           NEXUS_URL_RELEASE: https://repo.hoznet.dev/private
