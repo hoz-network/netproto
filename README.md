@@ -1,2 +1,2 @@
 # netproto
-.proto definition for 
+Protobuf message definitions for netapi.
