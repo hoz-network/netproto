@@ -22,7 +22,7 @@ jobs:
         run: ./gradlew screamCompile
         env:
           OPTIMIZE_FOR_CI_CD: 1
-          NEXUS_URL_RELEASE: https://repo.hoznet.dev/releases
-          NEXUS_URL_SNAPSHOT: https://repo.hoznet.dev/snapshots
-          NEXUS_USERNAME: github
-          NEXUS_PASSWORD: ${{ secrets.REPOSILITE_CI_TOKEN }}
+          NEXUS_URL_RELEASE: https://maven.pkg.github.com/hoz-network/netproto
+          NEXUS_URL_SNAPSHOT: https://maven.pkg.github.com/hoz-network/netproto
+          NEXUS_USERNAME: hoz-network
+          NEXUS_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
