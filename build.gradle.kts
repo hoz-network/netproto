@@ -5,6 +5,7 @@ plugins {
     id("com.google.protobuf") version "0.8.18"
 
     kotlin("jvm") version "1.6.20-RC"
+    id "nebula.release" version "16.0.0"
 }
 
 group = "net.hoz"
