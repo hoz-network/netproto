@@ -15,7 +15,7 @@ message NetPlayer {
   /*
   Owner of this data
   */
-  hoz.proto.v1.data.OwnableData owner = 1;
+  string id = 1;
   /*
   Settings of this player
   */
@@ -34,7 +34,7 @@ message NetPlayerHistory {
   /*
   Owner of this data
   */
-  hoz.proto.v1.data.OwnableData owner = 1;
+  string id = 1;
   /*
   Saved history of the player, limited to 50 last actions
   */
