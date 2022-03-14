@@ -23,7 +23,7 @@ service NetPlayerService {
   rpc playerOnline(hoz.proto.v1.data.WUUID) returns (resulter.proto.ProtoResultable);
   rpc playerOffline(hoz.proto.v1.data.WUUID) returns (resulter.proto.ProtoResultable);
 
-  rpc updateData(hoz.proto.v1.player.NetPlayer) returns (resulter.proto.ProtoResultable);
+  rpc updateSettings(hoz.proto.v1.player.PlayerSettings) returns (resulter.proto.ProtoResultable);
 
   rpc subscribeToUpdates(google.protobuf.Empty) returns (stream hoz.proto.v1.player.NetPlayer);
 }

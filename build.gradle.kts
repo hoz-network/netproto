@@ -18,7 +18,7 @@ object DependencyVersions {
     const val REACTOR = "3.4.12"
     const val RSOCKET_RPC = "0.3.0"
     const val PROTOBUF = "3.19.1"
-    const val RESULTER = "1.1.6"
+    const val RESULTER = "1.1.7"
 }
 
 repositories {

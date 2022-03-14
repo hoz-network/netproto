@@ -30,7 +30,7 @@ message NetPlayer {
   bool isEmpty = 4;
 }
 
-message NetPlayerHistory {
+message PlayerHistory {
   /*
   Owner of this data
   */
