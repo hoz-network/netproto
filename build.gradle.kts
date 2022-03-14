@@ -1,8 +1,6 @@
 import com.google.protobuf.gradle.*
 
 plugins {
-    `java-library`
-    idea
     id("org.screamingsandals.plugin-builder") version "1.0.76"
     id("com.google.protobuf") version "0.8.18"
 
@@ -10,7 +8,11 @@ plugins {
 }
 
 group = "net.hoz"
-version = "1.0.0-SNAPSHOT"
+
+apply {
+    plugin("java-library")
+    plugin("idea")
+}
 
 object DependencyVersions {
     const val SLIB = "2.0.1-SNAPSHOT"
