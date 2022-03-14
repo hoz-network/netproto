@@ -5,6 +5,8 @@ plugins {
     idea
     id("org.screamingsandals.plugin-builder") version "1.0.76"
     id("com.google.protobuf") version "0.8.18"
+
+    kotlin("jvm") version "1.6.20-RC"
 }
 
 group = "net.hoz"
@@ -16,7 +18,7 @@ object DependencyVersions {
     const val REACTOR = "3.4.12"
     const val RSOCKET_RPC = "0.3.0"
     const val PROTOBUF = "3.19.1"
-    const val RESULTER = "1.1.4"
+    const val RESULTER = "1.1.6"
 }
 
 repositories {
@@ -25,23 +27,29 @@ repositories {
 }
 
 dependencies {
-    api(group = "org.slf4j", name = "slf4j-api", version = DependencyVersions.SLF4J)
+    api("org.slf4j", "slf4j-api", DependencyVersions.SLF4J)
 
-    api(group = "io.projectreactor", name = "reactor-core", version = DependencyVersions.REACTOR)
+    api("io.projectreactor", "reactor-core", DependencyVersions.REACTOR)
 
-    api(group = "io.rsocket.rpc", name = "rsocket-rpc-core", version = DependencyVersions.RSOCKET_RPC)
-    api(group = "io.rsocket.rpc", name = "rsocket-rpc-protobuf", version = DependencyVersions.RSOCKET_RPC)
+    api("io.rsocket.rpc", "rsocket-rpc-core", DependencyVersions.RSOCKET_RPC)
+    api("io.rsocket.rpc", "rsocket-rpc-protobuf", DependencyVersions.RSOCKET_RPC)
 
-    api(group = "com.google.protobuf", name = "protobuf-java", version = DependencyVersions.PROTOBUF)
+    api("com.google.protobuf", "protobuf-java", DependencyVersions.PROTOBUF)
 
-    api(group = "org.screamingsandals.lib", name = "core-common", version = DependencyVersions.SLIB)
+    api("org.screamingsandals.lib", "core-common", DependencyVersions.SLIB)
 
-    api(group = "com.iamceph.resulter", name = "resulter-core", version = DependencyVersions.RESULTER)
+    api("com.iamceph.resulter", "resulter-core", DependencyVersions.RESULTER)
 }
 
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
