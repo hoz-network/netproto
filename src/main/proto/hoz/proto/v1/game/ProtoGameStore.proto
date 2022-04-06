@@ -24,7 +24,7 @@ message ProtoGameStore {
 }
 
 message StoreHolder {
-  string uuid = 1;
+  string id = 1;
 
   repeated StoreCategory categories = 2;
   repeated StoreQuickBuySlot quickBuySlots = 3;

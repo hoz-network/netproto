@@ -16,9 +16,15 @@ message NetPlayerRequest {
   string address = 2;
 }
 
-message SettingsUpdateRequest {
+message SettingsKeyUpdate {
   string id = 1;
-  hoz.proto.v1.player.PlayerSettings settings = 2;
+  PlayerSettings.Key key = 2;
+  bool value = 3;
+}
+
+message SettingsRankUpdate {
+  string id = 1;
+  PlayerRank rank = 2;
 }
 
 service NetPlayerService {
@@ -28,7 +34,10 @@ service NetPlayerService {
   rpc playerOnline(hoz.proto.v1.data.WUUID) returns (resulter.proto.ProtoResultable);
   rpc playerOffline(hoz.proto.v1.data.WUUID) returns (resulter.proto.ProtoResultable);
 
-  rpc updateSettings(SettingsUpdateRequest) returns (resulter.proto.ProtoResultable);
+  rpc updateSettingsByKey(SettingsKeyUpdate) returns (resulter.proto.ProtoResultable);
+
+  rpc addRank(SettingsRankUpdate) returns (resulter.proto.ProtoResultable);
+  rpc removeRank(SettingsRankUpdate) returns (resulter.proto.ProtoResultable);
 
   rpc subscribeToUpdates(google.protobuf.Empty) returns (stream hoz.proto.v1.player.NetPlayer);
 }
