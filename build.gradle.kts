@@ -4,7 +4,7 @@ plugins {
     id("org.screamingsandals.plugin-builder") version "1.0.76"
     id("com.google.protobuf") version "0.8.18"
 
-    kotlin("jvm") version "1.6.20-RC"
+    kotlin("jvm") version "1.6.20"
     id("nebula.release") version "16.0.0"
 }
 
@@ -19,9 +19,11 @@ object DependencyVersions {
     const val SLIB = "2.0.1-SNAPSHOT"
     const val SLF4J = "1.7.32"
     const val REACTOR = "3.4.12"
-    const val RSOCKET_RPC = "0.3.0"
-    const val PROTOBUF = "3.19.1"
+    const val PROTOBUF = "3.20.0"
+    const val GRPC = "1.45.1"
+    const val GRPC_KOTLIN = "1.2.1"
     const val RESULTER = "1.1.7"
+    const val COROUTINES = "1.6.1"
 }
 
 repositories {
@@ -34,10 +36,12 @@ dependencies {
 
     api("io.projectreactor", "reactor-core", DependencyVersions.REACTOR)
 
-    api("io.rsocket.rpc", "rsocket-rpc-core", DependencyVersions.RSOCKET_RPC)
-    api("io.rsocket.rpc", "rsocket-rpc-protobuf", DependencyVersions.RSOCKET_RPC)
+    api("com.google.protobuf", "protobuf-kotlin", DependencyVersions.PROTOBUF)
+    api("io.grpc", "grpc-kotlin-stub", DependencyVersions.GRPC_KOTLIN)
+    api("io.grpc", "grpc-stub", DependencyVersions.GRPC)
+    api("io.grpc", "grpc-protobuf", DependencyVersions.GRPC)
 
-    api("com.google.protobuf", "protobuf-java", DependencyVersions.PROTOBUF)
+    api("org.jetbrains.kotlinx", "kotlinx-coroutines-core", DependencyVersions.COROUTINES)
 
     api("org.screamingsandals.lib", "core-common", DependencyVersions.SLIB)
 
@@ -69,15 +73,22 @@ protobuf {
     }
 
     plugins {
-        id("rsocketRpc") {
-            artifact = "io.rsocket.rpc:rsocket-rpc-protobuf:${DependencyVersions.RSOCKET_RPC}"
+        id("grpc") {
+            artifact = "io.grpc:protoc-gen-grpc-java:${DependencyVersions.GRPC}"
+        }
+        id("grpckt") {
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:${DependencyVersions.GRPC_KOTLIN}:jdk7@jar"
         }
     }
 
     generateProtoTasks {
         all().forEach {
             it.plugins {
-                id("rsocketRpc")
+                id("grpc")
+                id("grpckt")
+            }
+            it.builtins {
+                id("kotlin")
             }
         }
     }
