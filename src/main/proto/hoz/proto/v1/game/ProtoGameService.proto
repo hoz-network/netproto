@@ -18,8 +18,13 @@ message MGameType {
   hoz.proto.v1.data.GameType type = 1;
 }
 
+message GameByNameRequest {
+  string name = 1;
+  hoz.proto.v1.data.GameType type = 2;
+}
+
 service NetGameService {
-  rpc oneByName(google.protobuf.StringValue) returns (resulter.proto.ResultableData);
+  rpc oneByName(GameByNameRequest) returns (resulter.proto.ResultableData);
   rpc oneById(hoz.proto.v1.data.WUUID) returns (resulter.proto.ResultableData);
 
   rpc all(MGameType) returns (stream hoz.proto.v1.game.ProtoGameFrame);

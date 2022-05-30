@@ -1,10 +1,11 @@
 import com.google.protobuf.gradle.*
+import org.cadixdev.gradle.licenser.LicenseProperties
 
 plugins {
     id("org.screamingsandals.plugin-builder") version "1.0.76"
     id("com.google.protobuf") version "0.8.18"
 
-    kotlin("jvm") version "1.6.20"
+    kotlin("jvm") version "1.6.21"
     id("nebula.release") version "16.0.0"
 }
 
@@ -18,7 +19,6 @@ apply {
 object DependencyVersions {
     const val SLIB = "2.0.1-SNAPSHOT"
     const val SLF4J = "1.7.32"
-    const val REACTOR = "3.4.12"
     const val PROTOBUF = "3.20.0"
     const val GRPC = "1.45.1"
     const val GRPC_KOTLIN = "1.2.1"
@@ -33,8 +33,6 @@ repositories {
 
 dependencies {
     api("org.slf4j", "slf4j-api", DependencyVersions.SLF4J)
-
-    api("io.projectreactor", "reactor-core", DependencyVersions.REACTOR)
 
     api("com.google.protobuf", "protobuf-kotlin", DependencyVersions.PROTOBUF)
     api("io.grpc", "grpc-kotlin-stub", DependencyVersions.GRPC_KOTLIN)
@@ -94,4 +92,11 @@ protobuf {
     }
 
     generatedFilesBaseDir = "${project.buildDir}/generatedProto"
+}
+
+afterEvaluate {
+    license {
+        include("**/*.proto ")
+        exclude("**/generatedProto")
+    }
 }
