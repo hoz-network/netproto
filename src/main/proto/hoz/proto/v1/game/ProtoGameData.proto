@@ -23,7 +23,7 @@ message ProtoGameFrame {
   repeated ProtoGameTeam teams = 5;
   repeated ProtoGameStore stores = 6;
   repeated ProtoGameSpawner spawners = 7;
-  ProtoWorldData world = 8;
+  ProtoGameWorld world = 8;
 
   int32 minPlayers = 9;
   hoz.proto.v1.data.GameType type = 10;
