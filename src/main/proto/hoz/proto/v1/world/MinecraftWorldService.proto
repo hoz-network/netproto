@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package hoz.proto.v1.player;
+
+option java_multiple_files = true;
+option java_package = "net.hoz.api.service";
+
+import "hoz/proto/v1/data/CommonData.proto";
+import "hoz/proto/v1/world/MinecraftWorld.proto";
+import "hoz/proto/v1/server/ServerData.proto";
+
+import "google/protobuf/empty.proto";
+import "resulter/proto/Resulter.proto";
+
+message WorldRequest {
+  string worldName = 1;
+}
+
+service MinecraftWorldService {
+  rpc load(WorldRequest) returns (resulter.proto.ResultableData);
+  rpc save(hoz.proto.v1.world.MinecraftWorld) returns (resulter.proto.ProtoResultable);
+  rpc delete(WorldRequest) returns (resulter.proto.ProtoResultable);
+
+  rpc lock(WorldRequest) returns (resulter.proto.ProtoResultable);
+  rpc unlock(WorldRequest) returns (resulter.proto.ProtoResultable);
+
+  rpc isLocked(WorldRequest) returns (hoz.proto.v1.world.LockStatus);
+
+  rpc listenForWorldUpdates(hoz.proto.v1.server.ServerDetail) returns (stream hoz.proto.v1.world.MinecraftWorld);
+}

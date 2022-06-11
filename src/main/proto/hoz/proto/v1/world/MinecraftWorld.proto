@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package hoz.proto.v1.world;
+
+option java_multiple_files = true;
+option java_package = "net.hoz.api.world";
+
+import "google/protobuf/timestamp.proto";
+
+
+message MinecraftWorld {
+  int32 id = 1;
+  string name = 2;
+  bytes data = 3;
+  LockStatus lockStatus = 4;
+  google.protobuf.Timestamp lockedAt = 5;
+}
+
+message LockStatus {
+  bool locked = 1;
+}
+
+message WorldName {
+  string name = 1;
+}

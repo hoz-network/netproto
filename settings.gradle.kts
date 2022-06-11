@@ -2,9 +2,8 @@ rootProject.name = "netproto"
 
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         mavenCentral()
-        mavenLocal()
+        gradlePluginPortal()
         maven("https://repo.screamingsandals.org/public")
     }
 }
