@@ -2,10 +2,10 @@ import com.google.protobuf.gradle.*
 import org.cadixdev.gradle.licenser.LicenseProperties
 
 plugins {
-    id("org.screamingsandals.plugin-builder") version "1.0.76"
+    id("org.screamingsandals.plugin-builder") version "1.0.77"
     id("com.google.protobuf") version "0.8.18"
 
-    kotlin("jvm") version "1.6.21"
+    kotlin("jvm") version "1.7.0"
     id("nebula.release") version "16.0.0"
 }
 
@@ -17,13 +17,13 @@ apply {
 }
 
 object DependencyVersions {
-    const val SLIB = "2.0.1-SNAPSHOT"
+    const val SLIB = "2.0.2-SNAPSHOT"
     const val SLF4J = "1.7.32"
-    const val PROTOBUF = "3.20.0"
-    const val GRPC = "1.45.1"
-    const val GRPC_KOTLIN = "1.2.1"
-    const val RESULTER = "1.1.7"
-    const val COROUTINES = "1.6.1"
+    const val PROTOBUF = "3.21.1"
+    const val GRPC = "1.46.3"
+    const val GRPC_KOTLIN = "1.3.0"
+    const val RESULTER = "1.1.8"
+    const val COROUTINES = "1.6.2"
 }
 
 repositories {
